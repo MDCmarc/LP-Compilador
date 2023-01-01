@@ -1,0 +1,7 @@
+DOS { 2 }
+Tres{3}
+
+Suma x y {
+    x + y
+}
+Suma (DOS) Tres

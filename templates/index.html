@@ -1,0 +1,63 @@
+<html>
+  <head>
+    <title>Mi aplicación</title>
+    <style>
+      body {
+        background-color: #cccccc;
+      }
+      .izquierda {
+        background-color: #D3D3D3;
+        float: left;
+        width: 50%;
+      }
+      .derecha {
+        background-color: #A9A9A9;
+        float: right;
+        width: 50%;
+      }
+      .clearfix:after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .error-box {
+        background-color: #ff0000;
+        color: #ffffff;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    {% if error_message %}
+      <div class="error-box">
+        <p>{{ error_message }}</p>
+      </div>
+    {% endif %}
+    <div class="izquierda">
+      <h1 style="color: red;">Funciones:</h1>
+      <ul>
+          {% for funcion in funciones %}
+            <li>{{ funcion }}</li>
+          {% endfor %}
+      </ul>
+      <h2 style="color: blue;">Consola:</h2>
+      <form action="/procesar" method="post">
+        <textarea name="texto" placeholder="Escribe aquí"></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+    <div class="derecha">
+      <h1 style="color: green;">Resultados</h1>
+      <ul>
+          {% for element in tupla %}
+              {% if loop.index is divisibleby 2 %}
+                  <li><strong>OUT: </strong> {{ element }} <p></li>
+              {% else %}
+                  <li><strong>IN: </strong> {{ element }} <p></li>
+              {% endif %}
+          {% endfor %}
+      </ul>
+    </div>
+    <div class="clearfix"></div>
+  </body>
+</html>
